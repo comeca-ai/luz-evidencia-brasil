@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FileText, Pill, Activity, Stethoscope, BookOpen, Shield, FlaskConical, BookMarked, Microscope, ArrowRight } from "lucide-react";
 import logo from "@/assets/comevidencias_logo.svg";
@@ -18,12 +19,12 @@ const Index = () => {
         </nav>
         <div className="md:hidden" />
         <nav className="flex items-center gap-3">
-          <button className="nav-link px-4 py-2 rounded-full border border-border hover:border-primary/20 transition-all duration-200">
+          <Link to="/login" className="nav-link px-4 py-2 rounded-full border border-border hover:border-primary/20 transition-all duration-200">
             Entrar
-          </button>
-          <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-all duration-200 hover:bg-primary-glow">
+          </Link>
+          <Link to="/cadastro" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-all duration-200 hover:bg-primary-glow">
             Criar conta
-          </button>
+          </Link>
         </nav>
       </header>
 
@@ -222,12 +223,12 @@ const Index = () => {
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
             Acesse gratuitamente fontes abertas brasileiras com apoio de inteligência artificial.
           </p>
-          <button className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105"
+          <Link to="/cadastro" className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105"
             style={{ background: "var(--gradient-primary)" }}
           >
             Criar conta gratuita
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </Link>
         </motion.div>
       </section>
 
