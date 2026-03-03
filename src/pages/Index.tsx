@@ -25,7 +25,7 @@ const Index = () => {
         <motion.img
           src={logo}
           alt="comEvidências"
-          className="h-16 md:h-20 mb-10"
+          className="h-20 md:h-28 mb-10"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
