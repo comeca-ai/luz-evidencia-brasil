@@ -5,22 +5,26 @@ interface FeatureCardProps {
   icon: ReactNode;
   title: string;
   description: string;
+  step: string;
 }
 
-const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
+const FeatureCard = ({ icon, title, description, step }: FeatureCardProps) => {
   return (
     <motion.div
-      className="flex flex-col items-center text-center px-4"
+      className="relative flex flex-col items-center text-center px-6"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-primary">
+      <span className="text-xs font-medium tracking-widest text-primary/40 uppercase mb-4">
+        {step}
+      </span>
+      <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent text-primary">
         {icon}
       </div>
-      <h3 className="font-display text-lg text-foreground mb-2">{title}</h3>
-      <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+      <h3 className="font-display text-xl text-foreground mb-3">{title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">{description}</p>
     </motion.div>
   );
 };
