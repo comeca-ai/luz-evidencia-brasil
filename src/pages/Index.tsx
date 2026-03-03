@@ -12,10 +12,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-5 md:px-16 max-w-7xl mx-auto">
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#fontes" className="nav-link">Fontes</a>
-          <a href="#como-funciona" className="nav-link">Como funciona</a>
-          <a href="#" className="nav-link">Para médicos</a>
+        <nav className="hidden md:flex items-center gap-2">
+          <a href="#fontes" className="px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all duration-200">Fontes</a>
+          <a href="#como-funciona" className="px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all duration-200">Como funciona</a>
+          <a href="#" className="px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all duration-200">Para médicos</a>
         </nav>
         <div className="md:hidden" />
         <nav className="flex items-center gap-3">
