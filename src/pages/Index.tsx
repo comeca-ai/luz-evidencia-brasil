@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FileText, Pill, Activity, Stethoscope, BookOpen, Shield, FlaskConical, BookMarked, Microscope, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FileText, Pill, Activity, Stethoscope, BookOpen, Shield, FlaskConical, BookMarked, Microscope, ArrowRight, Menu, X } from "lucide-react";
 import logo from "@/assets/comevidencias_logo.svg";
 import icon from "@/assets/comevidencias_icon.svg";
 import HeroSearch from "@/components/HeroSearch";
@@ -8,6 +9,8 @@ import SourceCard from "@/components/SourceCard";
 import FeatureCard from "@/components/FeatureCard";
 
 const Index = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -17,7 +20,9 @@ const Index = () => {
           <a href="#como-funciona" className="px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all duration-200">Como funciona</a>
           <a href="#" className="px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all duration-200">Para médicos</a>
         </nav>
-        <div className="md:hidden" />
+        <button className="md:hidden p-2 rounded-full hover:bg-accent transition-colors" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
         <nav className="flex items-center gap-3">
           <Link to="/login" className="nav-link px-4 py-2 rounded-full border border-border hover:border-primary/20 transition-all duration-200">
             Entrar
@@ -28,8 +33,25 @@ const Index = () => {
         </nav>
       </header>
 
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="md:hidden border-b border-border bg-background px-6 pb-4 flex flex-col gap-2"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <a href="#fontes" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all">Fontes</a>
+            <a href="#como-funciona" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all">Como funciona</a>
+            <a href="#" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-all">Para médicos</a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Hero */}
-      <section className="flex flex-col items-center px-6 pt-16 pb-28 md:pt-24 md:pb-36">
+      <section className="flex flex-col items-center px-6 pt-12 pb-20 md:pt-24 md:pb-36">
         <motion.img
           src={logo}
           alt="comEvidências"
@@ -121,14 +143,14 @@ const Index = () => {
       </section>
 
       {/* How it works */}
-      <section id="como-funciona" className="px-6 md:px-12 max-w-5xl mx-auto mt-28">
+      <section id="como-funciona" className="px-6 md:px-12 max-w-5xl mx-auto mt-16 md:mt-28">
         <div className="section-divider">
           <h2 className="text-lg md:text-xl text-foreground whitespace-nowrap">
             Como funciona
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 mt-10">
           <FeatureCard
             step="01"
             icon={<Stethoscope className="h-7 w-7" />}
@@ -151,7 +173,7 @@ const Index = () => {
       </section>
 
       {/* Example */}
-      <section className="px-6 md:px-12 max-w-3xl mx-auto mt-28">
+      <section className="px-6 md:px-12 max-w-3xl mx-auto mt-16 md:mt-28">
         <div className="section-divider">
           <h2 className="text-lg md:text-xl text-foreground whitespace-nowrap">
             Exemplo de uso
@@ -209,7 +231,7 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="px-6 md:px-12 max-w-3xl mx-auto mt-28">
+      <section className="px-6 md:px-12 max-w-3xl mx-auto mt-16 md:mt-28">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 16 }}
@@ -233,7 +255,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="mt-36 border-t border-border">
+      <footer className="mt-20 md:mt-36 border-t border-border">
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-12">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="flex items-center gap-3">
