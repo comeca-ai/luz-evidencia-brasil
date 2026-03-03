@@ -96,48 +96,65 @@ const Index = () => {
 
       {/* Sources section */}
       <section id="fontes" className="px-6 md:px-12 max-w-5xl mx-auto">
-        <div className="section-divider">
-          <h2 className="text-lg md:text-xl text-foreground whitespace-nowrap">
+        <div className="flex flex-col items-center text-center mb-12 md:mb-16">
+          <motion.p
+            className="text-xs font-medium uppercase tracking-[0.2em] text-primary mb-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            Fontes confiáveis
+          </motion.p>
+          <motion.h2
+            className="text-2xl md:text-3xl text-foreground"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
             Fontes abertas brasileiras
-          </h2>
+          </motion.h2>
+          <motion.p
+            className="mt-3 text-muted-foreground max-w-md text-sm md:text-base"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            Consultamos as principais bases de evidência clínica do Brasil e do mundo.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <SourceCard
-            icon={<FileText className="h-5 w-5" />}
+            icon={<FileText className="h-6 w-6" />}
             title="PCDTs"
-            description="Protocolos Clínicos e Diretrizes Terapêuticas do Ministério da Saúde"
-            count="~500 docs"
+            description="Protocolos Clínicos e Diretrizes Terapêuticas"
           />
           <SourceCard
-            icon={<Pill className="h-5 w-5" />}
+            icon={<Pill className="h-6 w-6" />}
             title="RENAME"
-            description="Relação Nacional de Medicamentos Essenciais do SUS"
-            count="~900 itens"
+            description="Relação Nacional de Medicamentos Essenciais"
           />
           <SourceCard
-            icon={<FlaskConical className="h-5 w-5" />}
+            icon={<FlaskConical className="h-6 w-6" />}
             title="Bulário ANVISA"
             description="Bulas de medicamentos registrados no Brasil"
-            count="~15.000"
           />
           <SourceCard
-            icon={<BookMarked className="h-5 w-5" />}
+            icon={<BookMarked className="h-6 w-6" />}
             title="CID-10"
             description="Classificação Internacional de Doenças"
-            count="~12.000"
           />
           <SourceCard
-            icon={<Microscope className="h-5 w-5" />}
+            icon={<Microscope className="h-6 w-6" />}
             title="SciELO"
             description="Artigos científicos brasileiros em acesso aberto"
-            count="~900.000"
           />
           <SourceCard
-            icon={<BookOpen className="h-5 w-5" />}
+            icon={<BookOpen className="h-6 w-6" />}
             title="PubMed"
-            description="Abstracts de literatura médica internacional"
-            count="~37M"
+            description="Literatura médica internacional"
           />
         </div>
       </section>
