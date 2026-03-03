@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D6B5E"/>
+      <stop offset="100%" style="stop-color:#14967F"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0D6B5E"/>
+      <stop offset="100%" style="stop-color:#14967F"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon: Abstract medical cross merged with search/evidence lens -->
+  <g transform="translate(40, 30)">
+    <!-- Outer circle (lens/scope) -->
+    <circle cx="70" cy="70" r="58" fill="none" stroke="url(#iconGrad)" stroke-width="6"/>
+    <!-- Cross inside -->
+    <rect x="56" y="32" width="28" height="76" rx="4" fill="url(#iconGrad)"/>
+    <rect x="32" y="56" width="76" height="28" rx="4" fill="url(#iconGrad)"/>
+    <!-- Inner highlight dots (evidence nodes) -->
+    <circle cx="70" cy="70" r="8" fill="white"/>
+    <!-- Search handle -->
+    <line x1="112" y1="112" x2="138" y2="138" stroke="url(#iconGrad)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Wordmark -->
+  <g transform="translate(210, 55)">
+    <!-- "com" in lighter weight -->
+    <text x="0" y="62" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="300" fill="#4A5568" letter-spacing="-1">com</text>
+    <!-- "Evidências" in bold -->
+    <text x="132" y="62" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="700" fill="#1A202C" letter-spacing="-1">Evidências</text>
+  </g>
+  
+  <!-- Subtle underline accent -->
+  <rect x="210" y="160" width="550" height="3" rx="1.5" fill="url(#accentGrad)" opacity="0.6"/>
+  
+  <!-- Tagline -->
+  <text x="210" y="185" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="400" fill="#718096" letter-spacing="3">IA PARA DECISÃO CLÍNICA BASEADA EM EVIDÊNCIAS</text>
+</svg>
