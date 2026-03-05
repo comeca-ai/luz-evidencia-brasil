@@ -46,6 +46,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [favoritosOpen, setFavoritosOpen] = useState(false);
   const [conversasOpen, setConversasOpen] = useState(false);
+  const userName = localStorage.getItem("user_name") || "Médico";
+  const userEmail = localStorage.getItem("user_email") || "medico@email.com";
+  const userInitials = userName.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase();
 
   return (
     <SidebarProvider>

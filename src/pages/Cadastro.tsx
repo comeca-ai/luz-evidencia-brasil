@@ -34,9 +34,13 @@ const Cadastro = () => {
 
   const passwordsMatch = form.password && form.confirmPassword && form.password === form.confirmPassword;
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder — sem conexão backend
+    localStorage.setItem("user_name", form.name);
+    localStorage.setItem("user_email", form.email);
+    navigate("/dashboard");
   };
 
   return (
