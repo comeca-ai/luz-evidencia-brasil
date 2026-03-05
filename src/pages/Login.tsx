@@ -13,6 +13,10 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const stored = localStorage.getItem("user");
+    if (!stored) {
+      localStorage.setItem("user", JSON.stringify({ name: email.split("@")[0], email }));
+    }
     navigate("/dashboard");
   };
 

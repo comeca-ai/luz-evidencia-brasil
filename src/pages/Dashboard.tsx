@@ -46,9 +46,15 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [favoritosOpen, setFavoritosOpen] = useState(false);
   const [conversasOpen, setConversasOpen] = useState(false);
-  const userName = localStorage.getItem("user_name") || "Médico";
-  const userEmail = localStorage.getItem("user_email") || "medico@email.com";
-  const userInitials = userName.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase();
+
+  const stored = localStorage.getItem("user");
+  const user = stored ? JSON.parse(stored) : { name: "Médico", email: "medico@email.com" };
+  const initials = user.name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w: string) => w[0].toUpperCase())
+    .join("");
 
   return (
     <SidebarProvider>
@@ -129,12 +135,12 @@ const Dashboard = () => {
                 <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm hover:bg-accent transition-colors">
                   <Avatar className="h-8 w-8">
                     <AvatarFallback className="bg-primary/10 text-primary text-xs font-semibold">
-                      {userInitials}
+                      {initials}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 text-left min-w-0">
-                    <p className="text-sm font-medium text-foreground truncate">{userName}</p>
-                    <p className="text-xs text-muted-foreground truncate">{userEmail}</p>
+                    <p className="text-sm font-medium text-foreground truncate">{user.name}</p>
+                    <p className="text-xs text-muted-foreground truncate">{user.email}</p>
                   </div>
                   <ChevronsUpDown className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                 </button>
@@ -147,7 +153,7 @@ const Dashboard = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="gap-2 cursor-pointer text-destructive focus:text-destructive"
-                  onClick={() => navigate("/login")}
+                  onClick={() => { localStorage.removeItem("user"); navigate("/login"); }}
                 >
                   <LogOut className="h-4 w-4" />
                   Sair
