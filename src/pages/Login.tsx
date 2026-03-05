@@ -6,13 +6,14 @@ import icon from "@/assets/comevidencias_icon.svg";
 import logo from "@/assets/comevidencias_logo.svg";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder — sem conexão backend
+    navigate("/dashboard");
   };
 
   return (
