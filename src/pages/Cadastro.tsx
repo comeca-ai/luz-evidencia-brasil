@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
 import icon from "@/assets/comevidencias_icon.svg";
@@ -34,9 +34,13 @@ const Cadastro = () => {
 
   const passwordsMatch = form.password && form.confirmPassword && form.password === form.confirmPassword;
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder — sem conexão backend
+    localStorage.setItem("user_name", form.name);
+    localStorage.setItem("user_email", form.email);
+    navigate("/dashboard");
   };
 
   return (
