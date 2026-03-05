@@ -1,35 +1,35 @@
 
 
-## Plano: Redesenhar seção de Fontes no estilo OpenEvidence
+## Plano: Tela pós-login com sidebar estilo OpenEvidence
 
-### Referência
-Na imagem do OpenEvidence, as fontes são apresentadas em um grid 2x2 com:
-- Cards grandes e limpos, centrados
-- Ícone/logo grande no topo de cada card
-- Nome da fonte em destaque
-- Descrição curta abaixo, centralizada
-- Muito espaço em branco, sem bordas pesadas
-- Layout que transmite autoridade e confiança
+### Visão geral
+Criar uma nova página `/dashboard` que aparece após o login, com layout de sidebar à esquerda (igual ao OpenEvidence) + área central com barra de pesquisa e chips de sugestão. Manter cores, fontes e identidade visual do comEvidências.
 
 ### Mudanças
 
-**1. Redesenhar `SourceCard.tsx`**
-- Layout vertical centralizado (ícone grande no topo, título, descrição)
-- Ícone maior (h-12 w-12) dentro de um círculo colorido
-- Texto centralizado
-- Card mais alto, com mais padding (p-8 md:p-10)
-- Bordas mais sutis, hover mais elegante
-- Remover o contador ("~500 docs") — ou torná-lo muito discreto
+**1. Criar `src/pages/Dashboard.tsx`**
+- Layout com `SidebarProvider` + `Sidebar` (componente shadcn já existente)
+- Sidebar esquerda contendo:
+  - Botão "Nova conversa" no topo (ícone + texto)
+  - Link "Coleções"
+  - Seção "Favoritos" com chevron toggle e texto "Adicione perguntas aos favoritos..."
+  - Seção "Conversas" com chevron toggle, link "Ver todas", e texto "Nenhuma conversa recente..."
+  - No rodapé da sidebar: avatar do usuário (iniciais), nome/email, menu com "Settings" e "Sair"
+- Área principal: logo do comEvidências centralizado, barra de pesquisa (HeroSearch), chips de sugestão — reutilizando componentes existentes
 
-**2. Atualizar grid na seção de fontes (`Index.tsx`)**
-- Mudar de 3 colunas para 2 colunas no desktop (`lg:grid-cols-2`)
-- Cards maiores com mais respiração
-- Aumentar gap entre cards
+**2. Atualizar `src/App.tsx`**
+- Adicionar rota `/dashboard`
 
-**3. Refinar o section-divider**
-- Título da seção mais imponente, como "Fontes abertas brasileiras" no estilo do OpenEvidence ("The leading medical information platform")
+**3. Atualizar `src/pages/Login.tsx`**
+- Redirecionar para `/dashboard` ao clicar em "Entrar" (navigate)
+
+### Componentes reutilizados
+- `SidebarProvider`, `Sidebar`, `SidebarContent`, `SidebarHeader`, `SidebarFooter`, `SidebarMenu`, `SidebarMenuItem`, `SidebarMenuButton` (já existem em `ui/sidebar.tsx`)
+- `HeroSearch` para a barra de pesquisa central
+- `DropdownMenu` para o menu do usuário no rodapé
 
 ### Arquivos afetados
-- `src/components/SourceCard.tsx`
-- `src/pages/Index.tsx`
+- `src/pages/Dashboard.tsx` (novo)
+- `src/App.tsx` (nova rota)
+- `src/pages/Login.tsx` (redirect)
 
