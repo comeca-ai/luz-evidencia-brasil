@@ -8,6 +8,7 @@ import logo from "@/assets/comevidencias_logo.svg";
 const CRM_REGEX = /^CRM\/[A-Z]{2}\s?\d{4,6}$/i;
 
 const Cadastro = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     crm: "",
@@ -34,12 +35,9 @@ const Cadastro = () => {
 
   const passwordsMatch = form.password && form.confirmPassword && form.password === form.confirmPassword;
 
-  const navigate = useNavigate();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem("user_name", form.name);
-    localStorage.setItem("user_email", form.email);
+    localStorage.setItem("user", JSON.stringify({ name: form.name, email: form.email, crm: form.crm }));
     navigate("/dashboard");
   };
 
